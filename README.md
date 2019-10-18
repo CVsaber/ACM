@@ -97,6 +97,7 @@ Sample Output
 包含多测试用例。需要循环处理每个用例
 1.通过一层循环读取当前测试用例的数组a
 2.通过两层循环结构，判断是否满足一个是另一个两倍
+测试平台：POJ-1552
 ```
 
 - C++实现
@@ -180,5 +181,122 @@ Sample Output
 在判断当前测试用例n时，可以采用双层循环：
 1.外循环遍历所有比n小的素数
 2.内循环计算素数连续的和cnt,当cnt==n时，ans+1
+测试平台：POJ-2739
+```
+
+- C++代码
+
+```c++
+#include <iostream>
+using namespace std;
+const int maxp = 2000, n = 10000;  //设置素数表的长度和输入值的上限
+int prime[maxp], total = 0;	//素数表和素数长度初始化
+bool isprime(int k)
+{
+	for(int i = 0; i < total; i++)
+	{
+		if (k % prime[i] == 0)
+			return false;	//不是素数
+	}
+	return true;
+}
+
+int main()
+{
+    for (int i = 2; i <= n; i++)	//建立素数表
+	{
+		if (isprime(i))
+			prime[total++] = i;	
+	}
+	
+	prime[total] = n+1;	//素数表构建完成
+	int m;
+	cin >> m; //输入第一个正数
+	while(m)
+	{
+		int ans = 0;
+		for(int i = 0; m >= prime[i]; i++)	//最小素数枚举
+		{
+			int cnt = 0; // 连续素数的和
+			for(int j = i; j < total && cnt < m; j++)	//注意终止条件
+			{
+				cnt += prime[j];	//累加
+			}
+			if (cnt == m)
+				++ans;
+		}
+		cout << ans << endl;
+		cin >> m;
+	}
+	return 0;
+}
+```
+
+###### 4.牛刀小试：对实数取整
+
+- 题目描述：一块土地，每年会流失50平方英里，以坐标原点向I,II象限以半圆的形式流失，根据坐标点确定多少年后，该点会流失。
+
+```
+Description
+Fred Mapper is considering purchasing some land in Louisiana to build his house on. In the process of investigating the land, he learned that the state of Louisiana is actually shrinking by 50 square miles each year, due to erosion caused by the Mississippi River. Since Fred is hoping to live in this house the rest of his life, he needs to know if his land is going to be lost to erosion. 
+
+After doing more research, Fred has learned that the land that is being lost forms a semicircle. This semicircle is part of a circle centered at (0,0), with the line that bisects the circle being the X axis. Locations below the X axis are in the water. The semicircle has an area of 0 at the beginning of year 1. 
+
+Input
+The first line of input will be a positive integer indicating how many data sets will be included (N). Each of the next N lines will contain the X and Y Cartesian coordinates of the land Fred is considering. These will be floating point numbers measured in miles. The Y coordinate will be non-negative. (0,0) will not be given.
+
+Output
+For each data set, a single line of output should appear. This line should take the form of: “Property N: This property will begin eroding in year Z.” Where N is the data set (counting from 1), and Z is the first year (start from 1) this property will be within the semicircle AT THE END OF YEAR Z. Z must be an integer. After the last data set, this should print out “END OF OUTPUT.”
+
+Sample Input
+2
+1.0 1.0
+25.0 0.0
+
+Sample Output
+Property 1: This property will begin eroding in year 1.
+Property 2: This property will begin eroding in year 20.
+END OF OUTPUT.
+Hint
+1.No property will appear exactly on the semicircle boundary: it will either be inside or outside. 
+2.This problem will be judged automatically. Your answer must match exactly, including the capitalization, punctuation, and white-space. This includes the periods at the ends of the lines. 
+3.All locations are given in miles.
+```
+
+- 思路
+
+```
+测试用例的个数事先已知，可以通过for循环进行遍历
+第i个测试用例(Xi,Yi)与圆心(0,0)构成的半圆即为流失的土地
+因为年份为整数，因此(Xi,Yi)流失的年份应该是大于(半圆面积/50)的最小整数
+向上取整ceil(x),向下取整floor(x)
+测试平台：POJ-1005
+```
+
+- C++实现
+
+```c++
+#include <iostream>
+#include <cmath>
+#define MPI 3.14159265
+using namespace std;
+int main()
+{
+	int num_props;	//测试用例个数
+	cin >> num_props;
+	
+	float x,y;	//坐标，单精度实数
+	double calc;	// 半圆面积/50
+	int years;  //失去土地的年份
+	for(int i = 1; i <= num_props; i++)
+	{
+		cin >> x >> y;
+		calc = (x*x + y*y) * MPI / 2 / 50;	
+		years = ceil(calc); // 向上取整
+		cout << "Property " << i << ": This property will begin eroding in year "<< years <<".\n";
+	}
+	cout << "END OF OUTPUT.\n" <<endl;
+	return 0;
+}
 ```
 
