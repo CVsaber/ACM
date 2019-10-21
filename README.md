@@ -300,3 +300,84 @@ int main()
 }
 ```
 
+###### 5.牛刀小试：二分法
+
+- 题目描述：一叠卡片向桌子外延伸，一张卡片延伸1/2,两张延伸1/2+1/3,n张延伸1/2 + 1/3 +...+1/(n+1),给定一个长度(最小0.01，最大5.20)，问最少需要多少张卡片？
+
+  ![1571671650743](README.assets/1571671650743.png)
+
+```
+Description
+How far can you make a stack of cards overhang a table? If you have one card, you can create a maximum overhang of half a card length. (We're assuming that the cards must be perpendicular to the table.) With two cards you can make the top card overhang the bottom one by half a card length, and the bottom one overhang the table by a third of a card length, for a total maximum overhang of 1/2 + 1/3 = 5/6 card lengths. In general you can make n cards overhang by 1/2 + 1/3 + 1/4 + ... + 1/(n + 1) card lengths, where the top card overhangs the second by 1/2, the second overhangs tha third by 1/3, the third overhangs the fourth by 1/4, etc., and the bottom card overhangs the table by 1/(n + 1). This is illustrated in the figure below.
+
+Input
+The input consists of one or more test cases, followed by a line containing the number 0.00 that signals the end of the input. Each test case is a single line containing a positive floating-point number c whose value is at least 0.01 and at most 5.20; c will contain exactly three digits.
+
+Output
+For each test case, output the minimum number of cards necessary to achieve an overhang of at least c card lengths. Use the exact output format shown in the examples.
+
+Sample Input
+1.00
+3.71
+0.04
+5.19
+0.0
+Sample Output
+3 card(s)
+61 card(s)
+1 card(s)
+273 card(s)
+```
+
+
+
+- 思路
+
+```
+1.数据长度的范围给定，因此可以先离线计算出延伸长度不超过5.20需要的卡片数组len[n]。
+2.延伸的长度是实数，因此需要注意计算的精度
+3.卡片长度数组len是递增数组，因此在给定一个延伸长度时，可以通过二分查找的方法来快速确定所需的卡片数
+```
+
+- C++代码
+
+```c++
+#include <iostream>
+using namespace std;
+const int maxn = 300;	//卡片数组的最大长度
+const double delta = 1e-8;	//精度
+
+int zero(double x)	//精度判断函数，返回值1,-1,0
+{
+	if (x < -delta)
+		return -1;
+	return x > delta;
+}
+
+int main()
+{
+	double len[maxn];	//长度数组
+	int total;	//数组实际长度
+	len[0] = 0.0;	
+	for (total = 1; zero(len[total-1] - 5.20) < 0; total++)	//构建卡片数组
+		len[total] = len[total-1] + 1.0/double(total + 1);
+	double x;	
+	cin >> x;
+	while(x)
+	{
+		int left = 0, right = total;	//二分查找
+		while(left + 1 < right)
+		{
+			int mid = (left + right) / 2;
+			if(zero(len[mid]-x)<0)
+				left = mid;
+			else
+				right = mid;
+		}
+		cout << right << " card(s)" << endl;
+		cin >> x;
+	}
+	return 0;
+}
+```
+
