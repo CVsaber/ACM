@@ -11,16 +11,15 @@ ACM撸啊撸，一直撸，一直爽
 
 ```
 Description
-
 Larry graduated this year and finally has a job. He's making a lot of money, but somehow never seems to have enough. Larry has decided that he needs to grab hold of his financial portfolio and solve his financing problems. The first step is to figure out what's been going on with his money. Larry has his bank account statements and wants to see how much money he has. Help Larry by writing a program to take his closing balance from each of the past twelve months and calculate his average account balance.
+
 Input
-
 The input will be twelve lines. Each line will contain the closing balance of his bank account for a particular month. Each number will be positive and displayed to the penny. No dollar sign will be included.
+
 Output
-
 The output will be a single number, the average (mean) of the closing balances for the twelve months. It will be rounded to the nearest penny, preceded immediately by a dollar sign, and followed by the end-of-line. There will be no other spaces or characters in the output.
-Sample Input
 
+Sample Input
 100.00
 489.12
 12454.12
@@ -33,8 +32,8 @@ Sample Input
 83.99
 1295.01
 1.75
-Sample Output
 
+Sample Output
 $1581.42
 ```
 
@@ -47,8 +46,7 @@ $1581.42
 
 - C++实现：
 
-```
-# 实现
+```c++
 #include<iostream>
 #include <iomanip> 
 using namespace std;
@@ -76,15 +74,19 @@ Description
 As part of an arithmetic competency program, your students will be given randomly generated lists of from 2 to 15 unique positive integers and asked to determine how many items in each list are twice some other item in the same list. You will need a program to help you with the grading. This program should be able to scan the lists and output the correct answer for each one. For example, given the list 
 1 4 3 2 9 7 18 22
 your program should answer 3, as 2 is twice 1, 4 is twice 2, and 18 is twice 9. 
+
 Input
 The input will consist of one or more lists of numbers. There will be one list of numbers per line. Each list will contain from 2 to 15 unique positive integers. No integer will be larger than 99. Each line will be terminated with the integer 0, which is not considered part of the list. A line with the single number -1 will mark the end of the file. The example input below shows 3 separate lists. Some lists may not contain any doubles.
+
 Output
 The output will consist of one line per input list, containing a count of the items that are double some other item.
+
 Sample Input
 1 4 3 2 9 7 18 22 0
 2 4 8 10 0
 7 5 11 13 1 3 0
 -1
+
 Sample Output
 3
 2
@@ -300,7 +302,7 @@ int main()
 }
 ```
 
-###### 5.牛刀小试：二分法
+###### 5.牛刀小试：二分法数据查找
 
 - 题目描述：一叠卡片向桌子外延伸，一张卡片延伸1/2,两张延伸1/2+1/3,n张延伸1/2 + 1/3 +...+1/(n+1),给定一个长度(最小0.01，最大5.20)，问最少需要多少张卡片？
 
@@ -328,8 +330,6 @@ Sample Output
 1 card(s)
 273 card(s)
 ```
-
-
 
 - 思路
 
@@ -380,4 +380,129 @@ int main()
 	return 0;
 }
 ```
+
+###### 6.牛刀小试：二分法求函数值
+
+- 题目描述：相关量的计算，例如z = f(x,y), 给定任意其中两个，求取第三个量，结果输出x,y,z。
+
+```
+Description
+Adapted from Wikipedia, the free encyclopedia
+The humidex is a measurement used by Canadian meteorologists to reflect the combined effect of heat and humidity. It differs from the heat index used in the United States in using dew point rather than relative humidity.
+When the temperature is 30°C (86°F) and the dew point is 15°C (59°F), the humidex is 34 (note that humidex is a dimensionless number, but that the number indicates an approximate temperature in C). If the temperature remains 30°C and the dew point rises to 25°C (77°F), the humidex rises to 42.3.
+The humidex tends to be higher than the U.S. heat index at equal temperature and relative humidity.
+The current formula for determining the humidex was developed by J.M. Masterton and F.A. Richardson of Canada's Atmospheric Environment Service in 1979.
+According to the Meteorological Service of Canada, a humidex of at least 40 causes "great discomfort" and above 45 is "dangerous." When the humidex hits 54, heat stroke is imminent.
+The record humidex in Canada occurred on June 20, 1953, when Windsor, Ontario hit 52.1. (The residents of Windsor would not have known this at the time, since the humidex had yet to be invented.) More recently, the humidex reached 50 on July 14, 1995 in both Windsor and Toronto.
+The humidex formula is as follows:
+humidex(湿热指数) = temperature(温度) + h
+h = (0.5555)× (e - 10.0)
+e = 6.11 × exp [5417.7530 × ((1/273.16) - (1/(dewpoint(露点)+273.16)))]
+where exp(x) is 2.718281828 raised to the exponent x.
+While humidex is just a number, radio announcers often announce it as if it were the temperature, e.g. "It's 47 degrees out there ... [pause] .. with the humidex,". Sometimes weather reports give the temperature and dewpoint, or the temperature and humidex, but rarely do they report all three measurements. Write a program that, given any two of the measurements, will calculate the third.
+You may assume that for all inputs, the temperature, dewpoint, and humidex are all between -100°C and 100°C.
+
+Input
+Input will consist of a number of lines. Each line except the last will consist of four items separated by spaces: a letter, a number, a second letter, and a second number. Each letter specifies the meaning of the number that follows it, and will be either T, indicating temperature, D, indicating dewpoint, or H, indicating humidex. The last line of input will consist of the single letter E.
+
+Output
+For each line of input except the last, produce one line of output. Each line of output should have the form:
+T number D number H number
+where the three numbers are replaced with the temperature, dewpoint, and humidex. Each value should be expressed rounded to the nearest tenth of a degree, with exactly one digit after the decimal point. All temperatures are in degrees celsius.
+
+Sample Input
+T 30 D 15
+T 30.0 D 25.0
+E
+
+Sample Output
+T 30.0 D 15.0 H 34.0
+T 30.0 D 25.0 H 42.3
+```
+
+- 思路
+
+```
+1.仔细观察公式，发现当知道露点和另一个变量时，求取另外一个值会比较容易，只需要通过露点计算出h,则可以通过
+		湿热指数 = 温度 + h
+  求取任意需要的值
+2.难点在于当不知道露点时，求取露点比较麻烦。好在我们知道露点的范围，那么就可以用二分法的思想去逼近正确的露点。不难发现，露点与h是正相关的，因此可设置露点初值为0，通过循环判断湿热指数是否大于预报指数，如果大于，则露点减小一个增量，使湿热指数逼近预报，否则增大露点一个增量。
+```
+
+- C++代码
+
+```c++
+#include <iostream>
+#include <math.h>
+#include <iomanip>
+using namespace std;
+
+double temp, hum, dew;  //温度，湿度，露点
+
+//根据温度tt,露点dd计算湿度hh
+double dohum(double tt, double dd)
+{
+	double e = 6.11 * exp(5417.7530 * ((1/273.16) - (1/(dd + 273.16))));
+	double h = 0.5555 * (e - 10.0);
+	return tt + h;
+}
+
+//根据湿度hh和露点dd计算温度tt
+double dotemp(double hh, double dd)
+{
+	double e = 6.11 * exp(5417.7530 * ((1/273.16) - (1/(dd + 273.16))));
+	double h = 0.5555 * (e - 10.0);
+	return hh - h;
+}
+
+//根据温度tt和湿度hh计算露点dd
+double dodew(double tt, double hh)
+{
+	double x; //露点的临时值
+	double delta = 100;		//露点增量
+	for(delta; delta > 0.00001; delta *= 0.5)	//每次衰减50%
+	{
+		if (dohum(tt, x) > hh)
+			x -= delta;
+		else
+			x += delta;
+	}
+	return x;
+}
+
+int main()
+{
+	char a,b;	//字母
+	double A,B;	//实际值
+	
+	cin >> a;
+	while (a != 'E')
+	{
+		cin >> A >> b >> B;
+		temp = hum = dew = -99999;	//先赋初值，便于接下来的判断
+		
+		if(a == 'T') temp = A;	//判断A代表的是什么数据
+		if(a == 'H') hum = A;
+		if(a == 'D') dew = A;
+		
+		if(b == 'T') temp = B;	//判断B代表的是什么数据
+		if(b == 'H') hum = B;
+		if(b == 'D') dew = B;
+		
+		if(temp == -99999) temp = dotemp(hum, dew);	//缺温度补温度
+		if(hum == -99999) hum = dohum(temp, dew);
+		if(dew == -99999) dew = dodew(temp, hum);
+		
+		cout << "T " << fixed<< setprecision(1) << temp
+		     << " D " << fixed<< setprecision(1) << dew
+			 << " H " << fixed<< setprecision(1) << hum << endl;
+		
+		cin >> a;	//下一行输入
+	}
+	
+	return 0;
+}
+```
+
+
 
