@@ -16,13 +16,23 @@
 
 ```
 Description
-Larry graduated this year and finally has a job. He's making a lot of money, but somehow  never seems to have enough. Larry has decided that he needs to grab hold of his financial  portfolio and solve his financing problems. The first step is to figure out what's been   going on with his money. Larry has his bank account statements and wants to see how much  money he has. Help Larry by writing a program to take his closing balance from each of    the past twelve months and calculate his average account balance.
+Larry graduated this year and finally has a job. He's making a lot of money, but somehow
+never seems to have enough. Larry has decided that he needs to grab hold of his financial
+portfolio and solve his financing problems. The first step is to figure out what's been 
+going on with his money. Larry has his bank account statements and wants to see how much 
+money he has. Help Larry by writing a program to take his closing balance from each of
+the past twelve months and calculate his average account balance.
 
 Input
-The input will be twelve lines. Each line will contain the closing balance of his bank   account for a particular month. Each number will be positive and displayed to the penny.  No dollar sign will be included.
+The input will be twelve lines. Each line will contain the closing balance of his bank 
+account for a particular month. Each number will be positive and displayed to the penny. 
+No dollar sign will be included.
 
 Output
-The output will be a single number, the average (mean) of the closing balances for the   twelve months. It will be rounded to the nearest penny, preceded immediately by a dollar  sign, and followed by the end-of-line. There will be no other spaces or characters in   the output.
+The output will be a single number, the average (mean) of the closing balances for the 
+twelve months. It will be rounded to the nearest penny, preceded immediately by a dollar 
+sign, and followed by the end-of-line. There will be no other spaces or characters in  
+the output.
 
 Sample Input
 100.00
@@ -76,15 +86,25 @@ int main()
 
 ```
 Description
-As part of an arithmetic competency program, your students will be given randomly   generated lists of from 2 to 15 unique positive integers and asked to determine how many   items in each list are twice some other item in the same list. You will need a program   to help you with the grading. This program should be able to scan the lists and output   the correct answer for each one. For example, given the list   
+As part of an arithmetic competency program, your students will be given randomly  
+generated lists of from 2 to 15 unique positive integers and asked to determine how many
+items in each list are twice some other item in the same list. You will need a program  
+to help you with the grading. This program should be able to scan the lists and output 
+the correct answer for each one. For example, given the list   
 1 4 3 2 9 7 18 22
 your program should answer 3, as 2 is twice 1, 4 is twice 2, and 18 is twice 9. 
 
 Input
-The input will consist of one or more lists of numbers. There will be one list of numbers   per line. Each list will contain from 2 to 15 unique positive integers. No integer will   be larger than 99. Each line will be terminated with the integer 0, which is not   considered part of the list. A line with the single number -1 will mark the end of the   file. The example input below shows 3 separate lists. Some lists may not contain any   doubles.
+The input will consist of one or more lists of numbers. There will be one list of numbers 
+per line. Each list will contain from 2 to 15 unique positive integers. No integer will  
+be larger than 99. Each line will be terminated with the integer 0, which is not   
+considered part of the list. A line with the single number -1 will mark the end of the
+file. The example input below shows 3 separate lists. Some lists may not contain any 
+doubles.
 
 Output
-The output will consist of one line per input list, containing a count of the items that   are double some other item.  
+The output will consist of one line per input list, containing a count of the items that 
+are double some other item.  
 
 Sample Input
 1 4 3 2 9 7 18 22 0
@@ -149,15 +169,26 @@ int main()
 
 ```
 Description
-Some positive integers can be represented by a sum of one or more consecutive prime   numbers. How many such representations does a given positive integer have? For example,   the integer 53 has two representations 5 + 7 + 11 + 13 + 17 and 53. The integer 41 has   three representations 2+3+5+7+11+13, 11+13+17, and 41. The integer 3 has only one   representation, which is 3. The integer 20 has no such representations. Note that   summands must be consecutive prime 
-numbers, so neither 7 + 13 nor 3 + 5 + 5 + 7 is a valid representation for the integer   20. 
-Your mission is to write a program that reports the number of representations for the   given positive integer.
+Some positive integers can be represented by a sum of one or more consecutive prime 
+numbers. How many such representations does a given positive integer have? For example,
+the integer 53 has two representations 5 + 7 + 11 + 13 + 17 and 53. The integer 41 has 
+three representations 2+3+5+7+11+13, 11+13+17, and 41. The integer 3 has only one   
+representation, which is 3. The integer 20 has no such representations. Note that 
+summands must be consecutive prime 
+numbers, so neither 7 + 13 nor 3 + 5 + 5 + 7 is a valid representation for the integer
+20. 
+Your mission is to write a program that reports the number of representations for the  
+given positive integer.
 
 Input
-The input is a sequence of positive integers each in a separate line. The integers are   between 2 and 10 000, inclusive. The end of the input is indicated by a zero.  
+The input is a sequence of positive integers each in a separate line. The integers are 
+between 2 and 10 000, inclusive. The end of the input is indicated by a zero.  
 
 Output
-The output should be composed of lines each corresponding to an input line except the   last zero. An output line includes the number of representations for the input integer as   the sum of one or more consecutive prime numbers. No other characters should be   inserted in the output.
+The output should be composed of lines each corresponding to an input line except the 
+last zero. An output line includes the number of representations for the input integer as
+the sum of one or more consecutive prime numbers. No other characters should be   
+inserted in the output.
 
 Sample Input
 2
@@ -245,15 +276,29 @@ int main()
 
 ```
 Description
-Fred Mapper is considering purchasing some land in Louisiana to build his house on. In  the process of investigating the land, he learned that the state of Louisiana is actually   shrinking by 50 square miles each year, due to erosion caused by the Mississippi River.   Since Fred is hoping to live in this house the rest of his life, he needs to know if   his land is going to be lost to erosion. 
+Fred Mapper is considering purchasing some land in Louisiana to build his house on. In
+the process of investigating the land, he learned that the state of Louisiana is actually 
+shrinking by 50 square miles each year, due to erosion caused by the Mississippi River. 
+Since Fred is hoping to live in this house the rest of his life, he needs to know if   
+his land is going to be lost to erosion. 
 
-After doing more research, Fred has learned that the land that is being lost forms a   semicircle. This semicircle is part of a circle centered at (0,0), with the line that   bisects the circle being the X axis. Locations below the X axis are in the water. The   semicircle has an area of 0 at the beginning of year 1. 
+After doing more research, Fred has learned that the land that is being lost forms a  
+semicircle. This semicircle is part of a circle centered at (0,0), with the line that 
+bisects the circle being the X axis. Locations below the X axis are in the water. The 
+semicircle has an area of 0 at the beginning of year 1. 
 
 Input
-The first line of input will be a positive integer indicating how many data sets will be   included (N). Each of the next N lines will contain the X and Y Cartesian coordinates   of the land Fred is considering. These will be floating point numbers measured in miles.   The Y coordinate will be non-negative. (0,0) will not be given.
+The first line of input will be a positive integer indicating how many data sets will be 
+included (N). Each of the next N lines will contain the X and Y Cartesian coordinates  
+of the land Fred is considering. These will be floating point numbers measured in miles. 
+The Y coordinate will be non-negative. (0,0) will not be given.
 
 Output
-For each data set, a single line of output should appear. This line should take the form   of: “Property N: This property will begin eroding in year Z.” Where N is the data set   (counting from 1), and Z is the first year (start from 1) this property will be within   the semicircle AT THE END OF YEAR Z. Z must be an integer. After the last data set, this   should print out “END OF OUTPUT.”
+For each data set, a single line of output should appear. This line should take the form 
+of: “Property N: This property will begin eroding in year Z.” Where N is the data set   
+(counting from 1), and Z is the first year (start from 1) this property will be within  
+the semicircle AT THE END OF YEAR Z. Z must be an integer. After the last data set, this 
+should print out “END OF OUTPUT.”
 
 Sample Input
 2
@@ -265,8 +310,11 @@ Property 1: This property will begin eroding in year 1.
 Property 2: This property will begin eroding in year 20.
 END OF OUTPUT.
 Hint
-1.No property will appear exactly on the semicircle boundary: it will either be inside or   outside. 
-2.This problem will be judged automatically. Your answer must match exactly, including   the capitalization, punctuation, and white-space. This includes the periods at the ends   of the lines. 
+1.No property will appear exactly on the semicircle boundary: it will either be inside or
+outside. 
+2.This problem will be judged automatically. Your answer must match exactly, including 
+the capitalization, punctuation, and white-space. This includes the periods at the ends  
+of the lines. 
 3.All locations are given in miles.
 ```
 
@@ -315,13 +363,25 @@ int main()
 
 ```
 Description
-How far can you make a stack of cards overhang a table? If you have one card, you can   create a maximum overhang of half a card length. (We're assuming that the cards must be   perpendicular to the table.) With two cards you can make the top card overhang the bottom   one by half a card length, and the bottom one overhang the table by a third of a card   length, for a total maximum overhang of 1/2 + 1/3 = 5/6 card lengths. In general you can   make n cards overhang by 1/2 + 1/3 + 1/4 + ... + 1/(n + 1) card lengths, where the top   card overhangs the second by 1/2, the second overhangs tha third by 1/3, the third   overhangs the fourth by 1/4, etc., and the bottom card overhangs the table by 1/(n + 1).   This is illustrated in the figure below.
+How far can you make a stack of cards overhang a table? If you have one card, you can   
+create a maximum overhang of half a card length. (We're assuming that the cards must be 
+perpendicular to the table.) With two cards you can make the top card overhang the bottom 
+one by half a card length, and the bottom one overhang the table by a third of a card   
+length, for a total maximum overhang of 1/2 + 1/3 = 5/6 card lengths. In general you can 
+make n cards overhang by 1/2 + 1/3 + 1/4 + ... + 1/(n + 1) card lengths, where the top   
+card overhangs the second by 1/2, the second overhangs tha third by 1/3, the third   
+overhangs the fourth by 1/4, etc., and the bottom card overhangs the table by 1/(n + 1).
+This is illustrated in the figure below.
 
 Input
-The input consists of one or more test cases, followed by a line containing the number   0.00 that signals the end of the input. Each test case is a single line containing a   positive floating-point number c whose value is at least 0.01 and at most 5.20; c will   contain exactly three digits.
+The input consists of one or more test cases, followed by a line containing the number  
+0.00 that signals the end of the input. Each test case is a single line containing a  
+positive floating-point number c whose value is at least 0.01 and at most 5.20; c will  
+contain exactly three digits.
 
 Output
-For each test case, output the minimum number of cards necessary to achieve an overhang   of at least c card lengths. Use the exact output format shown in the examples.  
+For each test case, output the minimum number of cards necessary to achieve an overhang 
+of at least c card lengths. Use the exact output format shown in the examples.  
 
 Sample Input
 1.00
@@ -392,28 +452,52 @@ int main()
 
 ```
 Description
-Adapted from Wikipedia, the free encyclopedia
-The humidex is a measurement used by Canadian meteorologists to reflect the combined   effect of heat and humidity. It differs from the heat index used in the United States in   using dew point rather than relative humidity.
-When the temperature is 30°C (86°F) and the dew point is 15°C (59°F), the humidex is 34   (note that humidex is a dimensionless number, but that the number indicates an   approximate temperature in C). If the temperature remains 30°C and the dew point rises to  25°C (77°F), the humidex rises to 42.3.
-The humidex tends to be higher than the U.S. heat index at equal temperature and relative   humidity.
-The current formula for determining the humidex was developed by J.M. Masterton and F.A.   Richardson of Canada's Atmospheric Environment Service in 1979.
-According to the Meteorological Service of Canada, a humidex of at least 40 causes "great   discomfort" and above 45 is "dangerous." When the humidex hits 54, heat stroke is   imminent.
-The record humidex in Canada occurred on June 20, 1953, when Windsor, Ontario hit 52.1.   (The residents of Windsor would not have known this at the time, since the humidex had   yet to be invented.) More recently, the humidex reached 50 on July 14, 1995 in both   Windsor and Toronto.
+Adapted from Wikipedia, the free encyclopedia The humidex is a measurement used by 
+Canadian meteorologists to reflect the combined   effect of heat and humidity. It differs
+from the heat index used in the United States in   using dew point rather than relative 
+humidity.
+When the temperature is 30°C (86°F) and the dew point is 15°C (59°F), the humidex is 34 
+(note that humidex is a dimensionless number, but that the number indicates an   
+approximate temperature in C). If the temperature remains 30°C and the dew point rises to 
+25°C (77°F), the humidex rises to 42.3.
+The humidex tends to be higher than the U.S. heat index at equal temperature and relative 
+humidity.
+The current formula for determining the humidex was developed by J.M. Masterton and F.A.
+Richardson of Canada's Atmospheric Environment Service in 1979.
+According to the Meteorological Service of Canada, a humidex of at least 40 causes "great 
+discomfort" and above 45 is "dangerous." When the humidex hits 54, heat stroke is   
+imminent.
+The record humidex in Canada occurred on June 20, 1953, when Windsor, Ontario hit 52.1.
+(The residents of Windsor would not have known this at the time, since the humidex had 
+yet to be invented.) More recently, the humidex reached 50 on July 14, 1995 in both   
+Windsor and Toronto.
 The humidex formula is as follows:
 humidex(湿热指数) = temperature(温度) + h
 h = (0.5555)× (e - 10.0)
 e = 6.11 × exp [5417.7530 × ((1/273.16) - (1/(dewpoint(露点)+273.16)))]
 where exp(x) is 2.718281828 raised to the exponent x.
-While humidex is just a number, radio announcers often announce it as if it were the   temperature, e.g. "It's 47 degrees out there ... [pause] .. with the humidex,". Sometimes   weather reports give the temperature and dewpoint, or the temperature and humidex, but   rarely do they report all three measurements. Write a program that, given any two of   the measurements, will calculate the third.
-You may assume that for all inputs, the temperature, dewpoint, and humidex are all   between -100°C and 100°C.
+While humidex is just a number, radio announcers often announce it as if it were the  
+temperature, e.g. "It's 47 degrees out there ... [pause] .. with the humidex,". Sometimes
+weather reports give the temperature and dewpoint, or the temperature and humidex, but  
+rarely do they report all three measurements. Write a program that, given any two of   
+the measurements, will calculate the third.
+You may assume that for all inputs, the temperature, dewpoint, and humidex are all 
+between -100°C and 100°C.
 
 Input
-Input will consist of a number of lines. Each line except the last will consist of four   items separated by spaces: a letter, a number, a second letter, and a second number. Each   letter specifies the meaning of the number that follows it, and will be either T,   indicating temperature, D, indicating dewpoint, or H, indicating humidex. The last line   of input will consist of the single letter E.
+Input will consist of a number of lines. Each line except the last will consist of four 
+items separated by spaces: a letter, a number, a second letter, and a second number. Each 
+letter specifies the meaning of the number that follows it, and will be either T,   
+indicating temperature, D, indicating dewpoint, or H, indicating humidex. The last line 
+of input will consist of the single letter E.
 
 Output
-For each line of input except the last, produce one line of output. Each line of output   should have the form:
+For each line of input except the last, produce one line of output. Each line of output 
+should have the form:
 T number D number H number
-where the three numbers are replaced with the temperature, dewpoint, and humidex. Each   value should be expressed rounded to the nearest tenth of a degree, with exactly one   digit after the decimal point. All temperatures are in degrees celsius.  
+where the three numbers are replaced with the temperature, dewpoint, and humidex. Each  
+value should be expressed rounded to the nearest tenth of a degree, with exactly one 
+digit after the decimal point. All temperatures are in degrees celsius.  
 
 Sample Input
 T 30 D 15
