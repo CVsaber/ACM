@@ -115,3 +115,95 @@ int main()
 }
 ```
 
+##### 行驶时间计算
+
+- 题目描述：跟随某人C从A地到B地，如果在路上发现有比C快的人D，那么就跟随D前往B地，......，问C从A地到B地的时间。
+
+```
+Description
+Many graduate students of Peking University are living in Wanliu Campus, which is 4.5 
+kilometers from the main campus – Yanyuan. Students in Wanliu have to either take a bus 
+or ride a bike to go to school. Due to the bad traffic in Beijing, many students choose 
+to ride a bike. 
+
+We may assume that all the students except "Charley" ride from Wanliu to Yanyuan at a 
+fixed speed. Charley is a student with a different riding habit – he always tries to 
+follow another rider to avoid riding alone. When Charley gets to the gate of Wanliu, he 
+will look for someone who is setting off to Yanyuan. If he finds someone, he will follow 
+that rider, or if not, he will wait for someone to follow. On the way from Wanliu to 
+Yanyuan, at any time if a faster student surpassed Charley, he will leave the rider he is 
+following and speed up to follow the faster one. 
+
+We assume the time that Charley gets to the gate of Wanliu is zero. Given the set off 
+time and speed of the other students, your task is to give the time when Charley arrives 
+at Yanyuan. 
+
+Input
+There are several test cases. The first line of each case is N (1 <= N <= 10000) 
+representing the number of riders (excluding Charley). N = 0 ends the input. The 
+following N lines are information of N different riders, in such format: 
+
+Vi [TAB] Ti 
+
+Vi is a positive integer <= 40, indicating the speed of the i-th rider (kph, kilometers
+per hour). Ti is the set off time of the i-th rider, which is an integer and counted in 
+seconds. In any case it is assured that there always exists a nonnegative Ti. 
+Output
+Output one line for each case: the arrival time of Charley. Round up (ceiling) the value 
+when dealing with a fraction.
+
+Sample Input
+4
+20	0
+25	-155
+27	190
+30	240
+2
+21	0
+22	34
+0
+
+Sample Output
+780
+771
+```
+
+
+
+- 思想
+
+```
+1.因为C的出发时间从0开始计，因此在一个测试用例中，我们求出最快到达B地的同学，即为C最快到达的时间
+2.需要注意的是有些同学的出发时间是从负数开始的，这些数据是无效的：
+	(1) 如果提前出发的同学快，则C追不上
+	(2) 如果提前出发的同学慢，可以追上，但C不会跟随，因为C本身是快的，不符合跟随的条件
+```
+
+- C++代码
+
+```c++
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+	const double DISTANCE = 4.50;
+	int n;
+	cin >> n;
+	while(n)
+	{
+		double v,t,temp,min = 1e100;	//定义速度(km/h)和时间(s) 定义最小时间	
+		 
+		for(int i = 0; i < n; ++i)
+		{
+			cin >> v >> t;
+			if(t >=0 && (temp = DISTANCE * 3600 / v + t) < min)
+				min  = temp;
+		}
+		cout << ceil(min) << endl;	//向上取整，向下floor(x)
+		cin >> n;	//输入下一组数据
+	}
+	return 0;
+}
+```
+
